@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  font-family:"Redaction 35", serif;
+  min-height: 100vh;
+  width: 300px;
+  background-color: rgb(13, 1, 1);
+  width: 100%;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+.snow {
+  position: fixed;
+  inset: 0; /* covers the whole screen */
+  z-index: 0;
+  pointer-events: none;
+
+  /* each radial-gradient is one white dot at a position */
+  background-image:
+    radial-gradient(3px 3px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 80px 120px, #fff, transparent),
+    radial-gradient(3px 3px at 150px 60px, #fff, transparent),
+    radial-gradient(2px 2px at 220px 180px, #fff, transparent),
+    radial-gradient(3px 3px at 300px 90px, #fff, transparent);
+  background-size: 320px 220px; /* this block of 5 dots repeats */
+
+  animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 220px;
+  } /* move down by one block height */
+}
+.container {
+  backdrop-filter: blur(10px);
+  color: white;
+  letter-spacing: 4px;
+}
+.line::after {
+  content: "|";
+  margin-left: 1px;
+  animation: blink 0.7s infinite;
+}
